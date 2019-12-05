@@ -1,6 +1,5 @@
 # Dec 3rd, 2019
-# Generate file w/student-term access
-# Code by: Tatiana Velasco
+## Code by: Tatiana Velasco
 
   # -------------------------------------------- #
   # PARTIR TURNSTILES DATA EN PEDAZOS MANEJABLES #
@@ -9,18 +8,21 @@
 
 rm(list = ls())
 
-#install.packages("bigreadr")
-
 #Load Libraries
 library(tidyverse)
 library(bigreadr)
 library(lubridate)
 
-# Count students per term and include their number of actions
-# -----------------------------------------------------------
-setwd("/Users/tatianavelasco.ro/Dropbox/TC\ Columbia/Research/Turnstiles/Torniquetes\ SPP\ y\ Redes/Data/Source/Torniquetes")
+# Prepare work space
+# ------------------
 
-files <- list.files("/Users/tatianavelasco.ro/Dropbox/TC\ Columbia/Research/Turnstiles/Torniquetes\ SPP\ y\ Redes/Data/Source/Torniquetes")
+# Ubicacion de la base original en pedazos:
+original <- c("/Users/tatianavelasco.ro/Dropbox/TC\ Columbia/Research/Turnstiles/Torniquetes\ SPP\ y\ Redes/Data/Source/Torniquetes")
+# Ubicacion donde se guardan los archivos por meses:
+mensual <- c("/Users/tatianavelasco.ro/Dropbox/TC\ Columbia/Research/Turnstiles/Torniquetes_TRT/Data/P2000")
+
+
+files <- list.files(original)
 files <- files[-c(1)] # Make sure this is the list of subsets of data only
 
 # Preparar tablas limpias
@@ -51,11 +53,13 @@ colnames(noviembre) <- c("programa", "carnet", "torniquete", "edificio", "porter
 colnames(diciembre) <- c("programa", "carnet", "torniquete", "edificio", "porteria", "accion", "modo", "fecha_completa", "dia_semana", "dia", "NA", "jornada", "fecha", "mesn")
 
 
+## Generate files one month a the time
+## -----------------------------------
 
 # Loop over subsets: enero
 for(filename in files) {
   
-  setwd("/Users/tatianavelasco.ro/Dropbox/TC\ Columbia/Research/Turnstiles/Torniquetes\ SPP\ y\ Redes/Data/Source/Torniquetes")
+  setwd(original)
   mydata <- read.csv(filename, sep = ";", header = FALSE)
   mydata <- mydata[-1,] # quito la primera fila de cada archivo
  # mydata <- mydata[1:5000,] ## PARA HACER PRUEBAS
@@ -68,14 +72,14 @@ for(filename in files) {
  
 }
 
-setwd("/Users/tatianavelasco.ro/Dropbox/TC\ Columbia/Research/Turnstiles/Torniquetes\ SPP\ y\ Redes/Data/Data_Processing")
+setwd(mensual)
 enero.csv <- write.csv(enero, file = "enero.csv")
-
+rm(enero, enero.csv)
 
 # Loop over subsets: febrero
 for(filename in files) {
   
-  setwd("/Users/tatianavelasco.ro/Dropbox/TC\ Columbia/Research/Turnstiles/Torniquetes\ SPP\ y\ Redes/Data/Source/Torniquetes")
+  setwd(original)
   mydata <- read.csv(filename, sep = ";", header = FALSE)
   mydata <- mydata[-1,] # quito la primera fila de cada archivo
   # mydata <- mydata[1:5000,] ## PARA HACER PRUEBAS
@@ -88,13 +92,14 @@ for(filename in files) {
   
 }
 
-setwd("/Users/tatianavelasco.ro/Dropbox/TC\ Columbia/Research/Turnstiles/Torniquetes\ SPP\ y\ Redes/Data/Data_Processing")
+setwd(mensual)
 febrero.csv <- write.csv(febrero, file = "febrero.csv")
+rm(febrero, febrero.csv)
 
 # Loop over subsets: marzo
 for(filename in files) {
   
-  setwd("/Users/tatianavelasco.ro/Dropbox/TC\ Columbia/Research/Turnstiles/Torniquetes\ SPP\ y\ Redes/Data/Source/Torniquetes")
+  setwd(original)
   mydata <- read.csv(filename, sep = ";", header = FALSE)
   mydata <- mydata[-1,] # quito la primera fila de cada archivo
   # mydata <- mydata[1:5000,] ## PARA HACER PRUEBAS
@@ -107,13 +112,14 @@ for(filename in files) {
   
 }
 
-setwd("/Users/tatianavelasco.ro/Dropbox/TC\ Columbia/Research/Turnstiles/Torniquetes\ SPP\ y\ Redes/Data/Data_Processing")
+setwd(mensual)
 marzo.csv <- write.csv(marzo, file = "marzo.csv")
+rm(marzo, marzo.csv)
 
 # Loop over subsets: abril
 for(filename in files) {
   
-  setwd("/Users/tatianavelasco.ro/Dropbox/TC\ Columbia/Research/Turnstiles/Torniquetes\ SPP\ y\ Redes/Data/Source/Torniquetes")
+  setwd(original)
   mydata <- read.csv(filename, sep = ";", header = FALSE)
   mydata <- mydata[-1,] # quito la primera fila de cada archivo
   # mydata <- mydata[1:5000,] ## PARA HACER PRUEBAS
@@ -126,13 +132,14 @@ for(filename in files) {
   
 }
 
-setwd("/Users/tatianavelasco.ro/Dropbox/TC\ Columbia/Research/Turnstiles/Torniquetes\ SPP\ y\ Redes/Data/Data_Processing")
+setwd(mensual)
 abril.csv <- write.csv(abril, file = "abril.csv")
+rm(abril, abril.csv)
 
 # Loop over subsets: mayo
 for(filename in files) {
   
-  setwd("/Users/tatianavelasco.ro/Dropbox/TC\ Columbia/Research/Turnstiles/Torniquetes\ SPP\ y\ Redes/Data/Source/Torniquetes")
+  setwd(original)
   mydata <- read.csv(filename, sep = ";", header = FALSE)
   mydata <- mydata[-1,] # quito la primera fila de cada archivo
   # mydata <- mydata[1:5000,] ## PARA HACER PRUEBAS
@@ -145,13 +152,14 @@ for(filename in files) {
   
 }
 
-setwd("/Users/tatianavelasco.ro/Dropbox/TC\ Columbia/Research/Turnstiles/Torniquetes\ SPP\ y\ Redes/Data/Data_Processing")
+setwd(mensual)
 mayo.csv <- write.csv(mayo, file = "mayo.csv")
+rm(mayo, mayo.csv)
 
 # Loop over subsets: junio
 for(filename in files) {
   
-  setwd("/Users/tatianavelasco.ro/Dropbox/TC\ Columbia/Research/Turnstiles/Torniquetes\ SPP\ y\ Redes/Data/Source/Torniquetes")
+  setwd(original)
   mydata <- read.csv(filename, sep = ";", header = FALSE)
   mydata <- mydata[-1,] # quito la primera fila de cada archivo
   # mydata <- mydata[1:5000,] ## PARA HACER PRUEBAS
@@ -164,13 +172,14 @@ for(filename in files) {
   
 }
 
-setwd("/Users/tatianavelasco.ro/Dropbox/TC\ Columbia/Research/Turnstiles/Torniquetes\ SPP\ y\ Redes/Data/Data_Processing")
+setwd(mensual)
 junio.csv <- write.csv(junio, file = "junio.csv")
+rm(junio, junio.csv)
 
 # Loop over subsets: julio
 for(filename in files) {
   
-  setwd("/Users/tatianavelasco.ro/Dropbox/TC\ Columbia/Research/Turnstiles/Torniquetes\ SPP\ y\ Redes/Data/Source/Torniquetes")
+  setwd(original)
   mydata <- read.csv(filename, sep = ";", header = FALSE)
   mydata <- mydata[-1,] # quito la primera fila de cada archivo
   # mydata <- mydata[1:5000,] ## PARA HACER PRUEBAS
@@ -183,13 +192,14 @@ for(filename in files) {
   
 }
 
-setwd("/Users/tatianavelasco.ro/Dropbox/TC\ Columbia/Research/Turnstiles/Torniquetes\ SPP\ y\ Redes/Data/Data_Processing")
+setwd(mensual)
 julio.csv <- write.csv(julio, file = "julio.csv")
+rm(julio, julio.csv)
 
 # Loop over subsets: agosto
 for(filename in files) {
   
-  setwd("/Users/tatianavelasco.ro/Dropbox/TC\ Columbia/Research/Turnstiles/Torniquetes\ SPP\ y\ Redes/Data/Source/Torniquetes")
+  setwd(original)
   mydata <- read.csv(filename, sep = ";", header = FALSE)
   mydata <- mydata[-1,] # quito la primera fila de cada archivo
   # mydata <- mydata[1:5000,] ## PARA HACER PRUEBAS
@@ -202,13 +212,14 @@ for(filename in files) {
   
 }
 
-setwd("/Users/tatianavelasco.ro/Dropbox/TC\ Columbia/Research/Turnstiles/Torniquetes\ SPP\ y\ Redes/Data/Data_Processing")
+setwd(mensual)
 agosto.csv <- write.csv(agosto, file = "agosto.csv")
+rm(agosto, agosto.csv)
 
 # Loop over subsets: septiembre
 for(filename in files) {
   
-  setwd("/Users/tatianavelasco.ro/Dropbox/TC\ Columbia/Research/Turnstiles/Torniquetes\ SPP\ y\ Redes/Data/Source/Torniquetes")
+  setwd(original)
   mydata <- read.csv(filename, sep = ";", header = FALSE)
   mydata <- mydata[-1,] # quito la primera fila de cada archivo
   # mydata <- mydata[1:5000,] ## PARA HACER PRUEBAS
@@ -221,13 +232,14 @@ for(filename in files) {
   
 }
 
-setwd("/Users/tatianavelasco.ro/Dropbox/TC\ Columbia/Research/Turnstiles/Torniquetes\ SPP\ y\ Redes/Data/Data_Processing")
+setwd(mensual)
 septiembre.csv <- write.csv(septiembre, file = "septiembre.csv")
+rm(septiembre, septiembre.csv)
 
 # Loop over subsets: octubre
 for(filename in files) {
   
-  setwd("/Users/tatianavelasco.ro/Dropbox/TC\ Columbia/Research/Turnstiles/Torniquetes\ SPP\ y\ Redes/Data/Source/Torniquetes")
+  setwd(original)
   mydata <- read.csv(filename, sep = ";", header = FALSE)
   mydata <- mydata[-1,] # quito la primera fila de cada archivo
   # mydata <- mydata[1:5000,] ## PARA HACER PRUEBAS
@@ -240,13 +252,14 @@ for(filename in files) {
   
 }
 
-setwd("/Users/tatianavelasco.ro/Dropbox/TC\ Columbia/Research/Turnstiles/Torniquetes\ SPP\ y\ Redes/Data/Data_Processing")
+setwd(mensual)
 octubre.csv <- write.csv(octubre, file = "octubre.csv")
+rm(octubre, octubre.csv)
 
 # Loop over subsets: noviembre
 for(filename in files) {
   
-  setwd("/Users/tatianavelasco.ro/Dropbox/TC\ Columbia/Research/Turnstiles/Torniquetes\ SPP\ y\ Redes/Data/Source/Torniquetes")
+  setwd(original)
   mydata <- read.csv(filename, sep = ";", header = FALSE)
   mydata <- mydata[-1,] # quito la primera fila de cada archivo
   # mydata <- mydata[1:5000,] ## PARA HACER PRUEBAS
@@ -259,13 +272,14 @@ for(filename in files) {
   
 }
 
-setwd("/Users/tatianavelasco.ro/Dropbox/TC\ Columbia/Research/Turnstiles/Torniquetes\ SPP\ y\ Redes/Data/Data_Processing")
+setwd(mensual)
 noviembre.csv <- write.csv(noviembre, file = "noviembre.csv")
+rm(noviembre, noviembre.csv)
 
 # Loop over subsets: diciembre
 for(filename in files) {
   
-  setwd("/Users/tatianavelasco.ro/Dropbox/TC\ Columbia/Research/Turnstiles/Torniquetes\ SPP\ y\ Redes/Data/Source/Torniquetes")
+  setwd(original)
   mydata <- read.csv(filename, sep = ";", header = FALSE)
   mydata <- mydata[-1,] # quito la primera fila de cada archivo
   # mydata <- mydata[1:5000,] ## PARA HACER PRUEBAS
@@ -278,13 +292,15 @@ for(filename in files) {
   
 }
 
-setwd("/Users/tatianavelasco.ro/Dropbox/TC\ Columbia/Research/Turnstiles/Torniquetes\ SPP\ y\ Redes/Data/Data_Processing")
+setwd(mensual)
 diciembre.csv <- write.csv(diciembre, file = "diciembre.csv")
+rm(diciembre, diciembre.csv)
 
 
 
 
 
+unique <- mydata[!duplicated(mydata$carnet, mydata$torniquete, mydata$fecha_completa),]
 
 
 
