@@ -1,5 +1,5 @@
 # Turnstiles project
-# Tatiana Velascto R
+# Tatiana Velasco R
 # December 13th, 2019
 
 
@@ -8,7 +8,7 @@
 # -------------------------------------------------------------- #
 
 ## Genera las listas de pares para cada base de mes a mes. No en loop sino separado
-## La ventaja de hacerlo separado es que si el codigo se encuentra con un error en un mes dado, puede seguir al siguente. 
+## La ventaja de hacerlo separado es que si el codigo se encuentra con un error en un mes dado, puede seguir al siguiente. 
 
 
 rm(list = ls())
@@ -89,10 +89,6 @@ for (y in 2016:2019) { # try w/one year
 
 setwd(store)
 edge.list.full.enero.csv <- write.csv2(edge.list.full.all, "edge.list.full.enero.csv")
-
-end_time <- Sys.time() # stop counting time
-time <- end_time - start_time
-time 
 
 #### FEBRERO 
 # --------
@@ -494,4 +490,9 @@ for (y in 2016:2019) { # try w/one year
 
 setwd(store)
 edge.list.full.noviembre.csv <- write.csv2(edge.list.full.all, "edge.list.full.noviembre.csv")
+
+
+end_time <- Sys.time() # stop counting time
+time <- end_time - start_time
+time 
 
